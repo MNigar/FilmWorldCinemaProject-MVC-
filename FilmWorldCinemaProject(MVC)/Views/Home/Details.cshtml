@@ -1,0 +1,94 @@
+﻿@model FilmWorldCinemaProject_MVC_.Models.FilmDetails
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FilmJanr</h4>
+    <hr />
+
+
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Filmadi
+                </th>
+                <th>
+                    Janradi
+                </th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+
+
+
+            @foreach (var janr in Model.FilmJanr)
+            {
+            <tr>
+                <td>
+                    @janr.Films.Name
+                 
+                </td>
+                <td>
+                    @janr.Janrs.Name
+                </td>
+            </tr>
+                    }
+
+               
+
+
+
+            </tbody>
+    </table>
+
+   
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Filmadi
+                </th>
+                <th>
+                    Olke 
+                </th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+
+            
+
+                @foreach (var c in Model.FilmCountry)
+                {<tr>
+                     <td>
+                         @c.Films.Name
+                       
+                     </td>
+                     <td>
+                         @c.Countries.Name
+                     </td>
+                     </tr>
+                }
+            
+
+
+
+        </tbody>
+    </table>
+
+
+
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id })*@ 
+    @Html.ActionLink("Back to List", "Index")
+</p>
