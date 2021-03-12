@@ -2,6 +2,7 @@
 using FilmWorldCinemaProject_MVC_.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -57,6 +58,7 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
         {   
             using (CinemaContext context = new CinemaContext())
             {
+                
                 context.Film.Add(model.Film);
                 context.SaveChanges();
                
@@ -91,7 +93,7 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
 
 
              
-        }  
+        }
 
         public ActionResult Details(int id)
         {
@@ -99,15 +101,29 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
             using (CinemaContext context = new CinemaContext())
             {
                 var filmJanr = context.FilmJanr.Include("Films").Include("Janrs").Where(filmJ => filmJ.FilmId == id).ToList();
-                var filmCountry= context.FilmCountry.Include("Films").Include("Countries").Where(filmC => filmC.FilmId == id).ToList();
+                var filmCountry = context.FilmCountry.Include("Films").Include("Countries").Where(filmC => filmC.FilmId == id).ToList();
                 FilmDetails filmDetails = new FilmDetails();
                 filmDetails.FilmCountry = filmCountry;
                 filmDetails.FilmJanr = filmJanr;
                 return View(filmDetails);
 
             }
-              
+
         }
-       
+        [HttpGet]
+        public ActionResult Search(DateTime startDate, DateTime endDate)
+        {
+            using (CinemaContext context = new CinemaContext())
+            {
+                var startDateWithHours = startDate.Date;
+                var endDateWithHours = endDate.Date;
+
+                var result = context.Film.Where(x => DbFunctions.TruncateTime(x.PublicationDate)>= startDateWithHours && DbFunctions.TruncateTime(x.PublicationDate) <= endDateWithHours).ToList();
+                return View(result);
+            }
+           
+        }
+
+
     }
 }
