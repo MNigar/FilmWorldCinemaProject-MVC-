@@ -194,7 +194,6 @@
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Janr\Create.cshtml" />
     <Content Include="Views\Countries\Create.cshtml" />
-    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

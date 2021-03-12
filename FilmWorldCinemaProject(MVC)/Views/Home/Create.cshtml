@@ -73,7 +73,7 @@
             <select class="form-control select2" name="Countries[]" multiple>
                 @foreach (var item in Model.Countries)
                 {
-                    <option value="@item.Id"  >
+                    <option value="@item.Id">
                         @item.Name
                     </option>
                 }
@@ -111,12 +111,10 @@
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.PublicationDate.Date)
+                        @Html.DisplayFor(modelItem => item.PublicationDate)
                     </td>
                     <td>
-                        <a href="@item.Link" target="_blank">
-                            @item.Link
-                        </a>
+                        @Html.DisplayFor(modelItem => item.Link)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Duration)
