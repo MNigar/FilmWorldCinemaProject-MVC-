@@ -42,17 +42,16 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
             using (CinemaContext context = new CinemaContext())
             {
                 FilmList list = new FilmList();
-                list.Films= context.Film.ToList();
+                list.Films= context.Film.OrderBy(x => x.Id).Take(10).ToList();
                 list.Janrs = context.Janr.ToList();
                 list.Countries = context.Country.ToList();
 
                 return View(list);
 
             }
-
-               
+              
         }
-
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Create(FilmList model,CountryJanrListModel listModel)
         {   
@@ -78,20 +77,9 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
                     filmJanr.FilmId = model.Film.Id;
                     context.FilmJanr.Add(filmJanr);
                     context.SaveChanges();
-
                 }
-
-
-
-
-
                 return Redirect("Create");
-
-
-            }
-
-
-             
+            }            
         }  
 
         public ActionResult Details(int id)
@@ -105,19 +93,18 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
                 filmDetails.FilmCountry = filmCountry;
                 filmDetails.FilmJanr = filmJanr;
                 return View(filmDetails);
-
-            }
-              
+            }              
         }
+
         [HttpGet]
-        public ActionResult Search(DateTime startDate, DateTime endDate)
+        public ActionResult Search(DateTime? startDate, DateTime? endDate)
         {
             using (CinemaContext context = new CinemaContext())
             {
-                var startDateWithHours = startDate.Date;
-                var endDateWithHours = endDate.Date;
-
-                var result = context.Film.Where(x => DbFunctions.TruncateTime(x.PublicationDate) >= startDateWithHours && DbFunctions.TruncateTime(x.PublicationDate) <= endDateWithHours).ToList();
+                DateTime defaultStart = new DateTime(01, 01, 0001);
+                var startDateWithHours = startDate?.Date==null? defaultStart : startDate?.Date;
+                var endDateWithHours = endDate?.Date == null ? DateTime.Now.Date : endDate?.Date;
+                var result = context.Film.Where(x => DbFunctions.TruncateTime(x.PublicationDate) >= startDateWithHours && DbFunctions.TruncateTime(x.PublicationDate) <= endDateWithHours).ToList();              
                 return View(result);
             }
 

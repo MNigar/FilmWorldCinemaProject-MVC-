@@ -143,14 +143,14 @@
       <DependentUpon>202103100840118_changeTableName.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Country.cs" />
-    <Compile Include="Models\CountryJanrListModel.cs" />
-    <Compile Include="Models\Film.cs" />
-    <Compile Include="Models\FilmCountry.cs" />
-    <Compile Include="Models\FilmDetails.cs" />
-    <Compile Include="Models\FilmJanr.cs" />
-    <Compile Include="Models\FilmList.cs" />
-    <Compile Include="Models\Janr.cs" />
+    <Compile Include="Models\DbModel\Country.cs" />
+    <Compile Include="Models\ViewModel\CountryJanrListModel.cs" />
+    <Compile Include="Models\DbModel\Film.cs" />
+    <Compile Include="Models\DbModel\FilmCountry.cs" />
+    <Compile Include="Models\ViewModel\FilmDetails.cs" />
+    <Compile Include="Models\DbModel\FilmJanr.cs" />
+    <Compile Include="Models\ViewModel\FilmList.cs" />
+    <Compile Include="Models\DbModel\Janr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

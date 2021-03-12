@@ -7,22 +7,42 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <button type="button" onclick="location.href='@Url.Action("Create", "Home")'" class="btn btn-primary">Add New Film</button>
+    <button type="button" onclick="location.href='@Url.Action("Create", "Countries")'" class="btn btn-primary">Add New Country</button>
+    <button type="button" onclick="location.href='@Url.Action("Create", "Janr")'" class="btn btn-primary">Add New Janr</button>
 </p>
 <form>
     <div class="container">
         <div class="form-group">
             <div class="row">
-                <input type="text" name="startDate" />
-                <input type="text" name="endDate" />
+                <div class="col-md-4">
+
+
+                    <label for="startDate" class="col-md-3">StartDate:</label>
+                    <div class="col-md-8">
+
+
+                        <input type="datetime-local" id="startDate" name="startDate" class="form-control">
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+
+                    <label for="endDate" class="col-md-3">EndDate:</label>
+                    <div class="col-md-8">
+                        <input type="datetime-local" id="endDate" name="endDate" class="form-control">
+                    </div>
+
+                </div>
                 <input type="submit" value="Axtar" class="btn btn-success" formaction="/Home/Search/" formmethod="GET" />
             </div>
         </div>
-
         @*<a href="@Url.Action("Search","Home")">Search</a>*@
     </div>
 </form>
-<table class="table">
+<h2>All Movies </h2>
+
+<table class="table table-bordered">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -36,31 +56,32 @@
         <th>
             @Html.DisplayNameFor(model => model.Duration)
         </th>
-        <th></th>
+        <th>Details</th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PublicationDate)
-        </td>
-        <td>
-            <a href="@item.Link" target="_blank">
-                @item.Link
-            </a>       
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Duration)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublicationDate)
+            </td>
+            <td>
+                <a href="@item.Link" target="_blank">
+                    @item.Link
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration)
+            </td>
+            <td>
+
+                @Html.ActionLink("Details", "Details", new { id = item.Id })
+
+            </td>
+        </tr>
+    }
 
 </table>

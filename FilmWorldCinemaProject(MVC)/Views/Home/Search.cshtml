@@ -1,15 +1,18 @@
 ﻿@model IEnumerable<FilmWorldCinemaProject_MVC_.Models.Film>
 
 @{
-    ViewBag.Title = "Search";
+    ViewBag.Title = "Searching Result";
 }
 
 <h2>Search</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+
+    <button type="button" onclick="location.href='@Url.Action("Index", "Home")'" class="btn btn-primary">Back to List</button>
+
+     
 </p>
-<table class="table">
+<table class="table table-bordered">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -23,7 +26,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Duration)
         </th>
-        <th></th>
+        <th>Details</th>
     </tr>
 
 @foreach (var item in Model) {
@@ -43,9 +46,9 @@
         @Html.DisplayFor(modelItem => item.Duration)
     </td>
     <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+   
+        @Html.ActionLink("Details", "Details", new { id = item.Id }) 
+   
     </td>
 </tr>
 }
