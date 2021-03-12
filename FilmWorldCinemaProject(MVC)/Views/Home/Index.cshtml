@@ -9,6 +9,19 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<form>
+    <div class="container">
+        <div class="form-group">
+            <div class="row">
+                <input type="text" name="startDate" />
+                <input type="text" name="endDate" />
+                <input type="submit" value="Axtar" class="btn btn-success" formaction="/Home/Search/" formmethod="GET" />
+            </div>
+        </div>
+
+        @*<a href="@Url.Action("Search","Home")">Search</a>*@
+    </div>
+</form>
 <table class="table">
     <tr>
         <th>
@@ -35,7 +48,9 @@
             @Html.DisplayFor(modelItem => item.PublicationDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Link)
+            <a href="@item.Link" target="_blank">
+                @item.Link
+            </a>       
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Duration)

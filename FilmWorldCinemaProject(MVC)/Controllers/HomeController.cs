@@ -2,6 +2,7 @@
 using FilmWorldCinemaProject_MVC_.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -108,6 +109,19 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
             }
               
         }
-       
+        [HttpGet]
+        public ActionResult Search(DateTime startDate, DateTime endDate)
+        {
+            using (CinemaContext context = new CinemaContext())
+            {
+                var startDateWithHours = startDate.Date;
+                var endDateWithHours = endDate.Date;
+
+                var result = context.Film.Where(x => DbFunctions.TruncateTime(x.PublicationDate) >= startDateWithHours && DbFunctions.TruncateTime(x.PublicationDate) <= endDateWithHours).ToList();
+                return View(result);
+            }
+
+        }
+
     }
 }
