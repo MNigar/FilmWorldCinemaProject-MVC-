@@ -21,7 +21,7 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
                 //var filmJanrList = context.FilmJanr.ToList();
                 var viewModel = new PaginationModel()
                 {
-                    BlogPerPage = 7,
+                    FilmPerPage = 7,
                     Films = filmList,
                     CurrentPage = page
                 };
