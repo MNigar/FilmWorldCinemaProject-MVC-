@@ -1,5 +1,6 @@
 ﻿using FilmWorldCinemaProject_MVC_.CinemaDb;
 using FilmWorldCinemaProject_MVC_.Models;
+using FilmWorldCinemaProject_MVC_.Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,18 +10,26 @@ using System.Web.Mvc;
 
 namespace FilmWorldCinemaProject_MVC_.Controllers
 {
-    public class HomeController : Controller
+    public class FilmController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
             using (CinemaContext context=new  CinemaContext())
             {
-                var filmList=context.Film.ToList();
+                var filmList=context.Film.OrderBy(x=>x.PublicationDate).ToList();
                 //ViewBag.Films = filmList;
                 //var filmJanrList = context.FilmJanr.ToList();
-                return View(filmList);
+                var viewModel = new PaginationModel()
+                {
+                    BlogPerPage = 7,
+                    Films = filmList,
+                    CurrentPage = page
+                };
+
+                return View(viewModel);
             }
-             
+          
+
         }
 
         public ActionResult About()
@@ -42,7 +51,7 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
             using (CinemaContext context = new CinemaContext())
             {
                 FilmList list = new FilmList();
-                list.Films= context.Film.OrderBy(x => x.Id).Take(10).ToList();
+                list.Films= context.Film.OrderByDescending(x => x.Id).Take(10).ToList();
                 list.Janrs = context.Janr.ToList();
                 list.Countries = context.Country.ToList();
 
@@ -53,30 +62,37 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult Create(FilmList model,CountryJanrListModel listModel)
-        {   
+        public ActionResult Create(FilmList model, CountryJanrListModel listModel)
+       {
             using (CinemaContext context = new CinemaContext())
             {
                 context.Film.Add(model.Film);
                 context.SaveChanges();
-               
-                var filmCountries = new FilmCountry();
-                foreach(var item in listModel.Countries)
-                {
-                    filmCountries.CountryId = item;
-                    filmCountries.FilmId = model.Film.Id;
-                    context.FilmCountry.Add(filmCountries);
-                    context.SaveChanges();
-                }
-               
 
-                var filmJanr = new FilmJanr();
-                foreach (var item in listModel.Janrs)
+                var filmCountries = new FilmCountry();
+                if (listModel.Countries == null || listModel.Janrs == null)
                 {
-                    filmJanr.JanrId = item;
-                    filmJanr.FilmId = model.Film.Id;
-                    context.FilmJanr.Add(filmJanr);
-                    context.SaveChanges();
+                    ViewBag.ErrorMessage = "Daxil edin";
+                }
+                else
+                {
+                    foreach (var item in listModel.Countries)
+                    {
+                        filmCountries.CountryId = item;
+                        filmCountries.FilmId = model.Film.Id;
+                        context.FilmCountry.Add(filmCountries);
+                        context.SaveChanges();
+                    }
+
+
+                    var filmJanr = new FilmJanr();
+                    foreach (var item in listModel.Janrs)
+                    {
+                        filmJanr.JanrId = item;
+                        filmJanr.FilmId = model.Film.Id;
+                        context.FilmJanr.Add(filmJanr);
+                        context.SaveChanges();
+                    }
                 }
                 return Redirect("Create");
             }            

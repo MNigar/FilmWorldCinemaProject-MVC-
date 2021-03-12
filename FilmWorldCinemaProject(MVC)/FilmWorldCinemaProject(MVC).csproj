@@ -129,7 +129,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="CinemaDb\CinemaContext.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\FilmController.cs" />
     <Compile Include="Controllers\JanrController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -142,6 +142,10 @@
     <Compile Include="Migrations\202103100840118_changeTableName.designer.cs">
       <DependentUpon>202103100840118_changeTableName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103121115004_addednotnull.cs" />
+    <Compile Include="Migrations\202103121115004_addednotnull.designer.cs">
+      <DependentUpon>202103121115004_addednotnull.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DbModel\Country.cs" />
     <Compile Include="Models\ViewModel\CountryJanrListModel.cs" />
@@ -151,6 +155,7 @@
     <Compile Include="Models\DbModel\FilmJanr.cs" />
     <Compile Include="Models\ViewModel\FilmList.cs" />
     <Compile Include="Models\DbModel\Janr.cs" />
+    <Compile Include="Models\ViewModel\PaginationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -187,14 +192,14 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Details.cshtml" />
-    <Content Include="Views\Home\Create.cshtml" />
+    <Content Include="Views\Film\About.cshtml" />
+    <Content Include="Views\Film\Contact.cshtml" />
+    <Content Include="Views\Film\Index.cshtml" />
+    <Content Include="Views\Film\Details.cshtml" />
+    <Content Include="Views\Film\Create.cshtml" />
     <Content Include="Views\Janr\Create.cshtml" />
     <Content Include="Views\Countries\Create.cshtml" />
-    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Film\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -218,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103100840118_changeTableName.resx">
       <DependentUpon>202103100840118_changeTableName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103121115004_addednotnull.resx">
+      <DependentUpon>202103121115004_addednotnull.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

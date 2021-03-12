@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FilmWorldCinemaProject_MVC_.Models.Film>
+﻿@model FilmWorldCinemaProject_MVC_.Models.ViewModel.PaginationModel
 
 @{
     ViewBag.Title = "Index";
@@ -7,10 +7,11 @@
 <h2>Index</h2>
 
 <p>
-    <button type="button" onclick="location.href='@Url.Action("Create", "Home")'" class="btn btn-primary">Add New Film</button>
+    <button type="button" onclick="location.href='@Url.Action("Create", "Film")'" class="btn btn-primary">Add New Film</button>
     <button type="button" onclick="location.href='@Url.Action("Create", "Countries")'" class="btn btn-primary">Add New Country</button>
     <button type="button" onclick="location.href='@Url.Action("Create", "Janr")'" class="btn btn-primary">Add New Janr</button>
 </p>
+<hr>
 <form>
     <div class="container">
         <div class="form-group">
@@ -34,54 +35,71 @@
                     </div>
 
                 </div>
-                <input type="submit" value="Axtar" class="btn btn-success" formaction="/Home/Search/" formmethod="GET" />
+                <input type="submit" value="Axtar" class="btn btn-success" formaction="/Film/Search/" formmethod="GET" />
             </div>
         </div>
         @*<a href="@Url.Action("Search","Home")">Search</a>*@
     </div>
 </form>
 <h2>All Movies </h2>
-
+@{ int num = 0;}
 <table class="table table-bordered">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            No
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PublicationDate)
+            Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Link)
+            PublicationDate
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Duration)
+            Link
+        </th>
+        <th>
+            Duration
         </th>
         <th>Details</th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.PaginatedBlogs())
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PublicationDate)
-            </td>
-            <td>
-                <a href="@item.Link" target="_blank">
-                    @item.Link
-                </a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Duration)
-            </td>
-            <td>
+        num += 1;
+        
+   <tr>
+    <td>
+        @num
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PublicationDate)
+    </td>
+    <td>
+        <a href="@item.Link" target="_blank">
+            @item.Link
+        </a>
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Duration)
+    </td>
+    <td>
 
-                @Html.ActionLink("Details", "Details", new { id = item.Id })
+        @Html.ActionLink("Details", "Details", new { id = item.Id })
 
-            </td>
-        </tr>
-    }
+    </td>
+</tr>
+}
 
 </table>
+<ul class="pagination">
+    @for (int i = 1; i <= Model.PageCount(); i++)
+    {
+        <li class="@(i == Model.CurrentPage ? "page-item active" : "page-item")">
+            <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+        </li>
+
+    }
+</ul>  
