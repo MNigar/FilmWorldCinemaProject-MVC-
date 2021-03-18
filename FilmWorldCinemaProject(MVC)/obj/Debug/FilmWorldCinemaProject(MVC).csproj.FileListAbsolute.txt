@@ -257,3 +257,5 @@ D:\COVID1904\MVCProject\New folder\FilmWorldCinemaProject-MVC-\FilmWorldCinemaPr
 D:\COVID1904\MVCProject\New folder\FilmWorldCinemaProject-MVC-\FilmWorldCinemaProject(MVC)\obj\Debug\FilmWorldCinemaProject(MVC).dll
 D:\COVID1904\MVCProject\New folder\FilmWorldCinemaProject-MVC-\FilmWorldCinemaProject(MVC)\obj\Debug\FilmWorldCinemaProject(MVC).pdb
 D:\COVID1904\MVCProject\New folder\FilmWorldCinemaProject-MVC-\FilmWorldCinemaProject(MVC)\obj\Debug\FilmWorldCinemaProject_MVC_.Migrations.addednotnull.resources
+D:\COVID1904\MVCProject\New folder\FilmWorldCinemaProject-MVC-\FilmWorldCinemaProject(MVC)\obj\Debug\FilmWorldCinemaProject_MVC_.Migrations.AddedUsertable.resources
+D:\COVID1904\MVCProject\New folder\FilmWorldCinemaProject-MVC-\FilmWorldCinemaProject(MVC)\obj\Debug\FilmWorldCinemaProject_MVC_.Migrations.AddeAboutCinemaTables.resources

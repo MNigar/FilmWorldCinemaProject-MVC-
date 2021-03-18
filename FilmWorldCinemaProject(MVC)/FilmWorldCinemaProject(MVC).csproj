@@ -130,7 +130,9 @@
     <Compile Include="CinemaDb\CinemaContext.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\FilmController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JanrController.cs" />
+    <Compile Include="Controllers\RowController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -146,8 +148,21 @@
     <Compile Include="Migrations\202103121115004_addednotnull.designer.cs">
       <DependentUpon>202103121115004_addednotnull.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103170708457_AddedUsertable.cs" />
+    <Compile Include="Migrations\202103170708457_AddedUsertable.designer.cs">
+      <DependentUpon>202103170708457_AddedUsertable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103181420225_AddeAboutCinemaTables.cs" />
+    <Compile Include="Migrations\202103181420225_AddeAboutCinemaTables.designer.cs">
+      <DependentUpon>202103181420225_AddeAboutCinemaTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\DbModel\Cinema.cs" />
     <Compile Include="Models\DbModel\Country.cs" />
+    <Compile Include="Models\DbModel\Hall.cs" />
+    <Compile Include="Models\DbModel\Row.cs" />
+    <Compile Include="Models\DbModel\Seat.cs" />
+    <Compile Include="Models\DbModel\User.cs" />
     <Compile Include="Models\ViewModel\CountryJanrListModel.cs" />
     <Compile Include="Models\DbModel\Film.cs" />
     <Compile Include="Models\DbModel\FilmCountry.cs" />
@@ -163,6 +178,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -181,6 +197,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -200,6 +217,10 @@
     <Content Include="Views\Janr\Create.cshtml" />
     <Content Include="Views\Countries\Create.cshtml" />
     <Content Include="Views\Film\Search.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Row\Create.cshtml" />
+    <Content Include="Views\Row\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -226,6 +247,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103121115004_addednotnull.resx">
       <DependentUpon>202103121115004_addednotnull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103170708457_AddedUsertable.resx">
+      <DependentUpon>202103170708457_AddedUsertable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103181420225_AddeAboutCinemaTables.resx">
+      <DependentUpon>202103181420225_AddeAboutCinemaTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
