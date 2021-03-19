@@ -8,27 +8,29 @@ using System.Web.Mvc;
 
 namespace FilmWorldCinemaProject_MVC_.Controllers
 {
-    public class RowController : Controller
+    public class CinemaController : Controller
     {
         CinemaContext context = new CinemaContext();
-        // GET: Row
+        // GET: Cinema
         public ActionResult Index()
         {
-            var rows = context.Row.ToList();
-            return View(rows);
+            var cinema = context.Cinema.ToList();
+            return View(cinema);
         }
+       
         [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult Create(Row model)
+        public ActionResult Create(Cinema model)
         {
-            context.Row.Add(model);
+            context.Cinema.Add(model);
             context.SaveChanges();
-            return View("Index");
+            return RedirectToAction("Index");
         }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

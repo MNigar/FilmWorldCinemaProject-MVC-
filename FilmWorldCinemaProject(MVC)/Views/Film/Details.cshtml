@@ -54,10 +54,10 @@
         <thead>
             <tr>
                 <th>
-                    Film 
+                    Film
                 </th>
                 <th>
-                    Country 
+                    Country
                 </th>
 
 
@@ -65,24 +65,42 @@
         </thead>
         <tbody>
 
-            
 
-                @foreach (var c in Model.FilmCountry)
-                {<tr>
-                     <td>
-                         @c.Films.Name
-                       
-                     </td>
-                     <td>
-                         @c.Countries.Name
-                     </td>
-                     </tr>
-                }
-            
+
+            @foreach (var c in Model.FilmCountry)
+            {
+                <tr>
+                    <td>
+                        @c.Films.Name
+
+                    </td>
+                    <td>
+                        @c.Countries.Name
+                    </td>
+                </tr>
+            }
+
 
 
 
         </tbody>
+       
+        
+            @{
+                string split = Model.Films.Link.Split('=')[1];
+            }
+            <tr>
+                <td>
+                    @Model.Films.Name
+
+                </td>
+                <td>
+                    <iframe width="500" height="500" src="https://www.youtube.com/embed/@split" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                </td>
+            </tr>
+        
+      
     </table>
 
 

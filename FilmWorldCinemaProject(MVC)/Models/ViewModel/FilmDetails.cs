@@ -9,6 +9,6 @@ namespace FilmWorldCinemaProject_MVC_.Models
     {
         public List<FilmCountry> FilmCountry { get; set; }
         public List<FilmJanr> FilmJanr { get; set; }
-        public List<Film> Films { get; set; }
+        public Film Films { get; set; }
     }
 }

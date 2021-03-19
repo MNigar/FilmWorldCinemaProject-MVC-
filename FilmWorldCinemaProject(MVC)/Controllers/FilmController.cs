@@ -105,9 +105,11 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
             {
                 var filmJanr = context.FilmJanr.Include("Films").Include("Janrs").Where(filmJ => filmJ.FilmId == id).ToList();
                 var filmCountry= context.FilmCountry.Include("Films").Include("Countries").Where(filmC => filmC.FilmId == id).ToList();
+                var films = context.Film.Where(x => x.Id == id).FirstOrDefault();
                 FilmDetails filmDetails = new FilmDetails();
                 filmDetails.FilmCountry = filmCountry;
                 filmDetails.FilmJanr = filmJanr;
+                filmDetails.Films = films;
                 return View(filmDetails);
             }              
         }

@@ -5,6 +5,9 @@
 }
 
 <h2>Index</h2>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 
 <p>
     <button type="button" onclick="location.href='@Url.Action("Create", "Film")'" class="btn btn-primary">Add New Film</button>
@@ -66,32 +69,37 @@
     @foreach (var item in Model.PaginatedBlogs())
     {
         num += 1;
-        
-   <tr>
-    <td>
-        @num
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Name)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.PublicationDate)
-    </td>
-    <td>
-        <a href="@item.Link" target="_blank">
-            @item.Link
-        </a>
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Duration)
-    </td>
-    <td>
 
-        @Html.ActionLink("Details", "Details", new { id = item.Id })
 
-    </td>
-</tr>
-}
+
+        <tr>
+
+            <td>
+                @num
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublicationDate)
+            </td>
+            <td>
+
+                <a href="@item.Link">
+                    <i class="fab fa-youtube" style="font-size:30px;"></i>
+
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration)
+            </td>
+            <td>
+
+                @Html.ActionLink("Details", "Details", new { id = item.Id })
+
+            </td>
+        </tr>
+    }
 
 </table>
 <ul class="pagination">
