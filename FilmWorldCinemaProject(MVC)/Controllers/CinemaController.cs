@@ -26,9 +26,24 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
         [HttpPost]
         public ActionResult Create(Cinema model)
         {
-            context.Cinema.Add(model);
-            context.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                var check = context.Cinema.Where(x => x.Name == model.Name).FirstOrDefault();
+                if (check == null)
+                {
+
+                    context.Cinema.Add(model);
+                    context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    Session["CinemaError"] = true;
+                    return RedirectToAction("Create");
+                }
+            }
+
+            return RedirectToAction("Create");
         }
         [HttpGet]
         public ActionResult Edit(int id)

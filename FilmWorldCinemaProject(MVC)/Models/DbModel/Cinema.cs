@@ -15,6 +15,8 @@ namespace FilmWorldCinemaProject_MVC_.Models.DbModel
         }
         [Key]
         public int Id { get; set; }
+        [Required]
+
         public string Name { get; set; }
         //public virtual List<Hall> Halls { get; set; }
         public virtual List<CinemaHall> CinemaHall { get; set; }

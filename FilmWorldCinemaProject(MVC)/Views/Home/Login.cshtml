@@ -35,7 +35,7 @@
                             <span class="fa fa-user-o"></span>
                         </div>
                         <h3 class="text-center mb-4">Sign In</h3>
-                        <form action="#" class="login-form" >
+                        <form action="#" class="login-form">
                             <div class="form-group">
                                 <input type="text" class="form-control rounded-left" placeholder="Username" name="Email" required>
                             </div>
@@ -44,23 +44,24 @@
                             </div>
                             <div class="form-group">
                                 @*<button type="submit" class="form-control btn btn-primary rounded submit px-3">Login</button>*@
-                           
-                                <input type="submit" value="Login" class="form-control btn btn-primary rounded submit px-3" formaction="/Home/Login/" formmethod="GET" />
+
+                                <input type="submit" value="Login" class="form-control btn btn-primary rounded submit px-3" formaction="/Home/Login/" formmethod="post" />
 
 
                             </div>
-                            <div class="form-group d-md-flex">
-                                <div class="w-50">
-                                    <label class="checkbox-wrap checkbox-primary">
-                                        Remember Me
-                                        <input type="checkbox" checked>
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                                <div class="w-50 text-md-right">
-                                    <a href="#">Forgot Password</a>
-                                </div>
+                            <div class="form-group">
+                                <button type="button" onclick="location.href='@Url.Action("Register", "Home")'" class="form-control btn btn-primary rounded submit px-3">Registration</button>
+
                             </div>
+                            
+                            @if(Session["LoginError"] != null)
+                            {
+                                <div class="alert alert-danger" role="alert">
+                                    Email or password incorrect
+                                </div>
+                                Session["LoginError"]= null;
+                            }
+
                         </form>
                     </div>
                 </div>

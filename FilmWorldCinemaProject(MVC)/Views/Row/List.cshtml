@@ -7,39 +7,43 @@
 <h2>List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CinemaHallId)
+            <span>Cinema</span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.RowId)
+            <span>Hall</span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Count)
+            <span>Row</span>
+        </th>
+        <th>
+            <span>Count</span>
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CinemaHall.Cinemas.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Row.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Count)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.CinemaHall.Cinemas.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CinemaHall.Halls.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Row.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Count)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "EditHallCinemaRow", new { id = item.Id }) |
+        @Html.ActionLink("Delete", "DeleteHallCinemaRow", new { id = item.Id })
+    </td>
+</tr>
 }
 
 </table>

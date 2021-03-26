@@ -18,6 +18,7 @@ namespace FilmWorldCinemaProject_MVC_.Models
         [Required]
         public string Name { get; set; }
         [Required]
+
         public DateTime PublicationDate { get; set; }
         [Required]
         public string Link { get; set; }

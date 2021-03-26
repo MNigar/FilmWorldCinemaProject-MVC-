@@ -23,11 +23,11 @@
     </div>
     @*<label for="startDate">StartDate:</label>
         <input type="datetime-local" id="startDate" name="startDate">*@
-    <div class="form-group">
-        @Html.LabelFor(model => model.PublicationDate, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.PublicationDate, "{yyyy-MM-dd}", new { htmlAttributes = new { @class = "form-control", type = "datetime-local" } })
-            @Html.ValidationMessageFor(model => model.PublicationDate, "", new { @class = "text-danger" })
+<div class="form-group">
+    @Html.LabelFor(model => model.PublicationDate, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+
+        <input type="date" name="PublicationDate" class="form-control" value="@Model.PublicationDate.ToString("yyyy-MM-dd")" />
         </div>
     </div>
 
@@ -59,9 +59,9 @@
                 {
 
                     @*<option value="@item.Id">
-                        @item.Janrs.Name
-                    </option>*@
-                    <option @(Model.FilmJanrs.Where(x=>x.JanrId==item.Id).Count()>0? "selected":"") value="@item.Id" >
+                            @item.Janrs.Name
+                        </option>*@
+                    <option @(Model.FilmJanrs.Where(x => x.JanrId == item.Id).Count() > 0 ? "selected" : "") value="@item.Id">
                         @item.Name
                     </option>
                 }
@@ -85,8 +85,8 @@
                         @item.Name
                     </option>
                     @*<option value="@item.Id">
-                @item.Countries.Name
-            </option>*@
+                            @item.Countries.Name
+                        </option>*@
                 }
 
             </select>

@@ -8,6 +8,48 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #ddd;
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+    </style>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -18,13 +60,57 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+              
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @*<li><ul>@Html.ActionLink("Cinema", "Index", "Cinema")
+                <li>
+
+                    @Html.ActionLink("Add Cinema", "Create", "Cinema")
+
+                </li>
+
+            </ul>
+        </li>*@
+                    <li>
+                        @Html.ActionLink("Film List", "Index", "Film")
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">Cinema</button>
+                            <div class="dropdown-content">
+                                @Html.ActionLink("Cinema List", "Index", "Cinema")
+                                @Html.ActionLink("Add Cinema", "Create", "Cinema")
+                                @Html.ActionLink("Add Hall for Cinema", "CreateHallCinema", "Hall")
+                                @Html.ActionLink("List of CinemaHalls", "HallCinemaList", "Hall")
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+
+                        <div class="dropdown">
+                            <button class="dropbtn">Seat</button>
+                            <div class="dropdown-content">
+                                @Html.ActionLink("SeatList", "List", "Row")
+                                @*@Html.ActionLink("Add Cinema", "Create", "Cinema")
+                    @Html.ActionLink("Add Hall for Cinema", "CreateHallCinema", "Hall")
+                    @Html.ActionLink("List of CinemaHalls", "HallCinemaList", "Hall")*@
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+
+                        <div class="dropdown">
+                            <button class="dropbtn">Row&Hall</button>
+                            <div class="dropdown-content">
+                                @Html.ActionLink("RowList", "Index", "Row")
+                                @Html.ActionLink("HallList", "Index", "Hall")
+
+                            </div>
+                        </div>
+                    </li>
+
                 </ul>
             </div>
         </div>

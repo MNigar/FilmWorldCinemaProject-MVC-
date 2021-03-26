@@ -1,4 +1,5 @@
 ﻿using FilmWorldCinemaProject_MVC_.CinemaDb;
+using FilmWorldCinemaProject_MVC_.Filter;
 using FilmWorldCinemaProject_MVC_.Models;
 using FilmWorldCinemaProject_MVC_.Models.ViewModel;
 using System;
@@ -9,7 +10,7 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace FilmWorldCinemaProject_MVC_.Controllers
-{
+{   [Auth]
     public class FilmController : Controller
     {
         CinemaContext context = new CinemaContext();
@@ -49,8 +50,7 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            using (CinemaContext context = new CinemaContext())
-            {
+           
                 FilmList list = new FilmList();
                 list.Films= context.Film.OrderByDescending(x => x.Id).Take(10).ToList();
                 list.Janrs = context.Janr.ToList();
@@ -58,15 +58,14 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
 
                 return View(list);
 
-            }
+            
               
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Create(FilmList model, CountryJanrListModel listModel)
        {
-            using (CinemaContext context = new CinemaContext())
-            {
+            
                 context.Film.Add(model.Film);
                 context.SaveChanges();
 
@@ -96,14 +95,13 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
                     }
                 }
                 return Redirect("Create");
-            }            
+                       
         }  
 
         public ActionResult Details(int id)
         {
             ViewBag.Message = "Your contact page.";
-            using (CinemaContext context = new CinemaContext())
-            {
+           
                 var filmJanr = context.FilmJanr.Include("Films").Include("Janrs").Where(filmJ => filmJ.FilmId == id).ToList();
                 var filmCountry= context.FilmCountry.Include("Films").Include("Countries").Where(filmC => filmC.FilmId == id).ToList();
                 var films = context.Film.Where(x => x.Id == id).FirstOrDefault();
@@ -112,20 +110,19 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
                 filmDetails.FilmJanr = filmJanr;
                 filmDetails.Films = films;
                 return View(filmDetails);
-            }              
+                         
         }
 
         [HttpGet]
         public ActionResult Search(DateTime? startDate, DateTime? endDate)
         {
-            using (CinemaContext context = new CinemaContext())
-            {
+            
                 DateTime defaultStart = new DateTime(01, 01, 0001);
                 var startDateWithHours = startDate?.Date==null? defaultStart : startDate?.Date;
                 var endDateWithHours = endDate?.Date == null ? DateTime.Now.Date : endDate?.Date;
                 var result = context.Film.Where(x => DbFunctions.TruncateTime(x.PublicationDate) >= startDateWithHours && DbFunctions.TruncateTime(x.PublicationDate) <= endDateWithHours).ToList();              
                 return View(result);
-            }
+            
 
         }
 

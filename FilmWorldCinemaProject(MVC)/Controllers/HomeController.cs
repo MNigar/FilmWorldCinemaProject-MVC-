@@ -21,26 +21,31 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
         }
         public ActionResult Login(User user)
         {
-            var check = context.User.Where(u => u.Email == user.Email).FirstOrDefault();
-            if (check != null)
+            if (ModelState.IsValid)
             {
-
-              
-                if (Crypto.VerifyHashedPassword(check.Password, user.Password))
+                var check = context.User.Where(u => u.Email == user.Email).FirstOrDefault();
+                if (check != null)
                 {
-                    Session["username"] = check.Email;
 
-                    return RedirectToAction("Index", "Film");
+
+                    if (Crypto.VerifyHashedPassword(check.Password, user.Password))
+                    {
+                        Session["username"] = check.Email;
+
+                        return RedirectToAction("Index", "Film");
+                    }
+
                 }
-               
-            }
-           
-            
+                else
+                {
+                    Session["LoginError"] = true;
 
-                  ViewBag.Error = "Yoxdur";
-                return View();
-            
-               
+
+                    //ViewBag.Error = "Yoxdur";
+                    return View("Login");
+                }
+            }
+            return View("Login");
         }
         [HttpGet]
         public ActionResult Register()
@@ -52,13 +57,28 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
         }
         [HttpPost]
         public ActionResult Register(User user)
-        {
-            user.Password = Crypto.HashPassword(user.Password);
+        {   if (ModelState.IsValid)
+            {
+                user.Password = Crypto.HashPassword(user.Password);
 
-            context.User.Add(user);
-            context.SaveChanges();
+                var check = context.User.Where(u => u.Email == user.Email).FirstOrDefault();
+                if (check == null)
+                {
 
-            return View();
+                    context.User.Add(user);
+                    context.SaveChanges();
+                    return RedirectToAction("Login");
+                }
+
+                else
+                {
+                    Session["RegisterError"] = true;
+                    return RedirectToAction("Register");
+
+                }
+            }
+            return RedirectToAction("Register");
+
 
         }
     }

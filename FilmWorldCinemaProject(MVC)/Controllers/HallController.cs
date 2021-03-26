@@ -44,10 +44,26 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
         [HttpPost]
         public ActionResult Create(Hall model)
         {
-            context.Hall.Add(model);
-           
-            context.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                var check = context.Hall.Where(x => x.Name == model.Name).FirstOrDefault();
+                if (check == null)
+                {
+
+                    context.Hall.Add(model);
+
+                    context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    Session["HallError"] = true;
+                    return RedirectToAction("Create");
+                }
+            }
+            return RedirectToAction("Create");
+
+
         }
         [HttpGet]
         public ActionResult Edit(int id)
@@ -90,16 +106,29 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
         [HttpPost]
         public ActionResult CreateHallCinema( int[] halls,int cinema )
         {
-            CinemaHall cinemaHall = new CinemaHall();
-            foreach(var i in halls)
+            if (ModelState.IsValid)
             {
-                cinemaHall.CinemaId = cinema;
-                cinemaHall.HallId = i;
-                context.CinemaHall.Add(cinemaHall);
-                context.SaveChanges();
+                CinemaHall cinemaHall = new CinemaHall();
+                foreach (var i in halls)
+                {
+                    cinemaHall.CinemaId = cinema;
+                    cinemaHall.HallId = i;
+                    var check = context.CinemaHall.Where(x => x.CinemaId == cinemaHall.CinemaId && x.HallId == cinemaHall.HallId).FirstOrDefault();
+                    if (check == null)
+                    {
+                        context.CinemaHall.Add(cinemaHall);
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        Session["CinemaHallError"] = true;
+                        return RedirectToAction("CreateHallCinema");
+                    }
+
+                }
+                return RedirectToAction("HallCinemaList");
 
             }
-            
             return RedirectToAction("HallCinemaList");
         }
         [HttpGet]
@@ -117,6 +146,16 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
             model.HallId = halls;
             var entity = context.Entry(model);
             entity.State = System.Data.Entity.EntityState.Modified;
+            context.SaveChanges();
+            return RedirectToAction("HallCinemaList");
+        }
+
+        public ActionResult DeleteHallCinema(int id)
+        {
+
+            var data = context.CinemaHall.Where(x => x.Id == id).FirstOrDefault();
+            context.CinemaHall.Remove(data);
+
             context.SaveChanges();
             return RedirectToAction("HallCinemaList");
         }

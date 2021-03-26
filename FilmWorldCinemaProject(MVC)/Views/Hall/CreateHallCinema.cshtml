@@ -13,35 +13,40 @@
 <div class="form-horizontal">
     <h4>CinemaHall</h4>
     <hr />
-    
-
     <div class="form-group">
-        <select class="form-control select2" name="cinema" required>
-            @foreach (var item in ViewBag.Cinema)
-            {
+        <span class="control-label col-md-2"> Cinema</span>
+        <div class="col-md-10">
 
-                <option value="@item.Id">
-                    @item.Name
-                </option>
-            }
+            <select class="form-control select2" name="cinema" required>
+                @foreach (var item in ViewBag.Cinema)
+                {
 
-        </select>
+                    <option value="@item.Id">
+                        @item.Name
+                    </option>
+                }
 
-      
+            </select>
 
+
+
+        </div>
     </div>
-
     <div class="form-group">
-        <select class="form-control select2" name="halls[]" multiple required>
-            @foreach (var item in ViewBag.Hall)
-            {
+        <span class="control-label col-md-2"> Hall</span>
+        <div class="col-md-10">
 
-                <option value="@item.Id">
-                    @item.Name
-                </option>
-            }
+            <select class="form-control select2" name="halls[]" multiple required>
+                @foreach (var item in ViewBag.Hall)
+                {
 
-        </select>
+                    <option value="@item.Id">
+                        @item.Name
+                    </option>
+                }
+
+            </select>
+        </div>
     </div>
 
     <div class="form-group">
@@ -49,9 +54,16 @@
             <input type="submit" value="Create" class="btn btn-default" />
         </div>
     </div>
+    @if (Session["CinemaHallError"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            This hall already exist in cinema
+        </div>
+        Session["CinemaHallError"] = null;
+    }
 </div>
-}
+    }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    <div>
+        @Html.ActionLink("Back to List", "HallCinemaList")
+    </div>

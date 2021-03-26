@@ -360,3 +360,4 @@ D:\film\FilmWorldCinemaProject-MVC-\FilmWorldCinemaProject(MVC)\obj\Debug\FilmWo
 D:\film\FilmWorldCinemaProject-MVC-\FilmWorldCinemaProject(MVC)\obj\Debug\FilmWorldCinemaProject_MVC_.Migrations.newrelatlk.resources
 D:\film\FilmWorldCinemaProject-MVC-\FilmWorldCinemaProject(MVC)\obj\Debug\FilmWorldCinemaProject_MVC_.Migrations.newrelatlkf.resources
 D:\film\FilmWorldCinemaProject-MVC-\FilmWorldCinemaProject(MVC)\obj\Debug\FilmWorldCinemaProject_MVC_.Migrations.seats.resources
+D:\film\FilmWorldCinemaProject-MVC-\FilmWorldCinemaProject(MVC)\obj\Debug\FilmWorldCinemaProject_MVC_.Migrations.addedattribut.resources

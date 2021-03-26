@@ -13,8 +13,8 @@
     <button type="button" onclick="location.href='@Url.Action("Create", "Film")'" class="btn btn-primary">Add New Film</button>
     <button type="button" onclick="location.href='@Url.Action("Create", "Countries")'" class="btn btn-primary">Add New Country</button>
     <button type="button" onclick="location.href='@Url.Action("Create", "Janr")'" class="btn btn-primary">Add New Janr</button>
-    <button type="button" onclick="location.href='@Url.Action("Index", "Janr")'" class="btn btn-primary">Back to janr list</button>
-    <button type="button" onclick="location.href='@Url.Action("Index", "Countries")'" class="btn btn-primary">Back to janr list</button>
+    <button type="button" onclick="location.href='@Url.Action("Index", "Janr")'" class="btn btn-primary">Janr list</button>
+    <button type="button" onclick="location.href='@Url.Action("Index", "Countries")'" class="btn btn-primary">Country list</button>
 
 </p>
 <hr>
@@ -97,10 +97,23 @@
                 @Html.DisplayFor(modelItem => item.Duration)
             </td>
             <td>
+                <a href="@Url.Action("Edit", new { id = item.Id })">
+                    <i class="fas fa-edit" style="font-size:30px;"></i>
 
-                @Html.ActionLink("Details", "Details", new { id = item.Id })
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id })
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+                </a>
+
+                <a href="@Url.Action("Details", new { id = item.Id })">
+                    <i class="fas fa-info-circle" style="font-size:30px;"></i>
+
+                </a>
+                <a href="@Url.Action("Delete", new { id = item.Id })">
+                    <i class="far fa-trash-alt" style="font-size:30px;"></i>
+
+                </a>
+         
+                @*@Html.ActionLink("Details", "Details", new { id = item.Id })*@
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id })*@
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.Id }) |*@
 
 
             </td>

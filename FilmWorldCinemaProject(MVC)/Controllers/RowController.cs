@@ -30,9 +30,25 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
         [HttpPost]
         public ActionResult Create(Row model)
         {
-            context.Row.Add(model);
-            context.SaveChanges();
-            return View("Index");
+            if (ModelState.IsValid)
+            {
+                var check = context.Row.Where(x => x.Name == model.Name).FirstOrDefault();
+                if (check == null)
+                {
+
+                    context.Row.Add(model);
+                    context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    Session["RowError"] = true;
+                    return RedirectToAction("Create");
+
+                }
+            }
+           
+            return RedirectToAction("Create");
         }
 
         [HttpGet]
@@ -87,7 +103,7 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
             seat.RowId = row;
             context.Seat.Add(seat);
             context.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("List");
         }
 
         [HttpGet]
@@ -111,6 +127,15 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
         }
 
 
+        public ActionResult DeleteHallCinemaRow(int id)
+        {
+
+            var data = context.Seat.Where(x => x.Id == id).FirstOrDefault();
+            context.Seat.Remove(data);
+
+            context.SaveChanges();
+            return RedirectToAction("List");
+        }
 
         protected override void Dispose(bool disposing)
         {

@@ -135,6 +135,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JanrController.cs" />
     <Compile Include="Controllers\RowController.cs" />
+    <Compile Include="Filter\Auth.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -205,6 +206,10 @@
     <Compile Include="Migrations\202103260835268_seats.cs" />
     <Compile Include="Migrations\202103260835268_seats.designer.cs">
       <DependentUpon>202103260835268_seats.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103262128095_addedattribut.cs" />
+    <Compile Include="Migrations\202103262128095_addedattribut.designer.cs">
+      <DependentUpon>202103262128095_addedattribut.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DbModel\Cinema.cs" />
@@ -359,6 +364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103260835268_seats.resx">
       <DependentUpon>202103260835268_seats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103262128095_addedattribut.resx">
+      <DependentUpon>202103262128095_addedattribut.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

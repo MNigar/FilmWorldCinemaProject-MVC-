@@ -14,19 +14,22 @@
     <h4>Seat</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-   
-    <input type="hidden" name="CinemaHallId" value="@ViewBag.Cinemahallid"/>
+
+    <input type="hidden" name="CinemaHallId" value="@ViewBag.Cinemahallid" />
     <div class="form-group">
-        <select class="form-control select2" name="row"  required>
-            @foreach (var item in ViewBag.Rows)
-            {
+        @Html.LabelFor(model => model.Row.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <select class="form-control select2" name="row" required>
+                @foreach (var item in ViewBag.Rows)
+                {
 
-                <option value="@item.Id">
-                    @item.Name
-                </option>
-            }
+                    <option value="@item.Id">
+                        @item.Name
+                    </option>
+                }
 
-        </select>
+            </select>
+        </div>
     </div>
 
     <div class="form-group">
