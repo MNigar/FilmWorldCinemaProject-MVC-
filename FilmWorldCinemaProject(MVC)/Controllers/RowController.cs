@@ -1,4 +1,5 @@
 ﻿using FilmWorldCinemaProject_MVC_.CinemaDb;
+using FilmWorldCinemaProject_MVC_.Filter;
 using FilmWorldCinemaProject_MVC_.Models.DbModel;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace FilmWorldCinemaProject_MVC_.Controllers
 {
+    [Auth]
     public class RowController : Controller
     {
         CinemaContext context = new CinemaContext();

@@ -1,4 +1,5 @@
 ﻿using FilmWorldCinemaProject_MVC_.CinemaDb;
+using FilmWorldCinemaProject_MVC_.Filter;
 using FilmWorldCinemaProject_MVC_.Models.DbModel;
 using FilmWorldCinemaProject_MVC_.Models.ViewModel;
 using System;
@@ -8,7 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace FilmWorldCinemaProject_MVC_.Controllers
-{
+{   [Auth]
     public class HallController : Controller
     {
         // GET: Hall
@@ -126,7 +127,7 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
                     }
 
                 }
-                return RedirectToAction("HallCinemaList");
+                            return RedirectToAction("HallCinemaList");
 
             }
             return RedirectToAction("HallCinemaList");
@@ -137,6 +138,7 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
         {
             var list = context.CinemaHall.Where(x => x.Id == id).FirstOrDefault();
             ViewBag.Hall = context.Hall.ToList();
+            //ViewBag.selectedHall = list.Halls.Name;
             return View(list);
         }
         [HttpPost]
