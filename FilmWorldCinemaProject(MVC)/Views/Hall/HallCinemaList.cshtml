@@ -1,0 +1,53 @@
+﻿@model IEnumerable<FilmWorldCinemaProject_MVC_.Models.DbModel.CinemaHall>
+
+@{
+    ViewBag.Title = "HallCinemaList";
+}
+
+<h2>HallCinemaList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CinemaId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HallId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cinemas.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Halls.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditHallCinema", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })|
+
+            @foreach (var i in ViewBag.Seat)
+            {
+                if (i == item.Id)
+                {
+                 
+                }
+                else
+                {
+                    <a href="@Url.Action("CreateHallCinemaRow", "Row",new { id = item.Id })"> Add seat</a>
+
+                }
+            }
+
+        </td>
+    </tr>
+}
+    
+</table>

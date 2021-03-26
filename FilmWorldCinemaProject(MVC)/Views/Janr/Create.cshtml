@@ -10,6 +10,7 @@
 @using (Html.BeginForm())
 {
     <button type="button" onclick="location.href='@Url.Action("Index", "Film")'" class="btn btn-primary">Back to film list</button>
+    <button type="button" onclick="location.href='@Url.Action("Index", "Janr")'" class="btn btn-primary">Back to janr list</button>
 
     @Html.AntiForgeryToken()
 

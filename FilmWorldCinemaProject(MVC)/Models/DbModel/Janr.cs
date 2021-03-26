@@ -13,6 +13,7 @@ namespace FilmWorldCinemaProject_MVC_.Models
             FilmJanrs = new List<FilmJanr>();
 
         }
+
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }

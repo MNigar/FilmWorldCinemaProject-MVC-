@@ -24,9 +24,9 @@ namespace FilmWorldCinemaProject_MVC_.Models
         [Required]
         public string Duration { get; set; }
    
-        public List<FilmCountry> FilmCountries { get; set; }
+        public virtual List<FilmCountry> FilmCountries { get; set; }
     
-        public List<FilmJanr> FilmJanrs { get; set; }
+        public virtual List<FilmJanr> FilmJanrs { get; set; }
 
     }
 }

@@ -17,6 +17,11 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
             var rows = context.Row.ToList();
             return View(rows);
         }
+        public ActionResult List()
+        {
+            var rows = context.Seat.ToList();
+            return View(rows);
+        }
         [HttpGet]
         public ActionResult Create()
         {
@@ -29,6 +34,84 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
             context.SaveChanges();
             return View("Index");
         }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var data = context.Row.Where(x => x.Id == id).FirstOrDefault();
+
+            return View(data);
+        }
+        [HttpPost]
+        public ActionResult Edit(Row data)
+        {
+
+            var entity = context.Entry(data);
+            entity.State = System.Data.Entity.EntityState.Modified;
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+        public ActionResult Delete(int id)
+        {
+
+            var data = context.Row.Where(x => x.Id == id).FirstOrDefault();
+            context.Row.Remove(data);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+
+        [HttpGet]
+        public ActionResult CreateHallCinemaRow(int id)
+
+        {
+
+            //ViewBag.Hall = context.CinemaHall.Where(x=>x.Id==id).Select(x=>x.HallId).ToList();
+            ViewBag.Cinemahallid = id;
+            ViewBag.Rows = context.Row.ToList();
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CreateHallCinemaRow(Seat seat,int row)
+
+        {
+
+            //ViewBag.Hall = context.CinemaHall.Where(x=>x.Id==id).Select(x=>x.HallId).ToList();
+            if(context.Seat.Any( x=>x.CinemaHallId== seat.CinemaHallId))
+            {
+                TempData["Message"] = "This already exits";
+            }
+            seat.RowId = row;
+            context.Seat.Add(seat);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult EditHallCinemaRow(int id)
+
+        {
+            var seat = context.Seat.Where(x => x.Id == id).FirstOrDefault();
+            
+           
+            return View(seat);
+        }
+        [HttpPost]
+        public ActionResult EditHallCinemaRow(Seat seat)
+
+        {
+
+            var entity = context.Entry(seat);
+            entity.State = System.Data.Entity.EntityState.Modified;
+            context.SaveChanges();
+            return RedirectToAction("List");
+        }
+
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

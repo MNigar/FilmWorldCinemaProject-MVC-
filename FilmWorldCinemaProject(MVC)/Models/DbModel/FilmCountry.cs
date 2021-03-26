@@ -10,7 +10,7 @@ namespace FilmWorldCinemaProject_MVC_.Models
         public int Id { get; set; }
         public int FilmId { get; set; }
         public int CountryId { get; set; }
-        public Country Countries { get; set; }
-        public Film Films { get; set; }
+        public virtual Country Countries { get; set; }
+        public virtual Film Films { get; set; }
     }
 }

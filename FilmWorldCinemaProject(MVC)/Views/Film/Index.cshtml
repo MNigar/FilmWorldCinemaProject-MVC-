@@ -13,6 +13,9 @@
     <button type="button" onclick="location.href='@Url.Action("Create", "Film")'" class="btn btn-primary">Add New Film</button>
     <button type="button" onclick="location.href='@Url.Action("Create", "Countries")'" class="btn btn-primary">Add New Country</button>
     <button type="button" onclick="location.href='@Url.Action("Create", "Janr")'" class="btn btn-primary">Add New Janr</button>
+    <button type="button" onclick="location.href='@Url.Action("Index", "Janr")'" class="btn btn-primary">Back to janr list</button>
+    <button type="button" onclick="location.href='@Url.Action("Index", "Countries")'" class="btn btn-primary">Back to janr list</button>
+
 </p>
 <hr>
 <form>
@@ -96,6 +99,9 @@
             <td>
 
                 @Html.ActionLink("Details", "Details", new { id = item.Id })
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+
 
             </td>
         </tr>

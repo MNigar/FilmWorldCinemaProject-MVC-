@@ -12,6 +12,7 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
 {
     public class FilmController : Controller
     {
+        CinemaContext context = new CinemaContext();
         public ActionResult Index(int page = 1)
         {
             using (CinemaContext context=new  CinemaContext())
@@ -128,5 +129,83 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
 
         }
 
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            //var filmJanr = context.FilmJanr.Include("Films").Include("Janrs").ToList();
+            //var filmCountry = context.FilmCountry.Include("Films").Include("Countries").ToList();
+            var film = context.Film.Where(x => x.Id == id).FirstOrDefault();
+            ViewBag.Janrs = context.Janr.ToList();
+            ViewBag.Countries = context.Country.ToList();
+
+            //FilmDetails filmDetails = new FilmDetails();
+            //filmDetails.FilmCountry = filmCountry;
+            //filmDetails.FilmJanr = filmJanr;
+            //filmDetails.Films = films;
+
+            return View(film);
+        }
+        [HttpPost]
+        public ActionResult Edit(Film film,int[] Countries,int[] Janrs)
+        {
+
+            var entity = context.Entry(film);
+            entity.State = System.Data.Entity.EntityState.Modified;
+
+            context.SaveChanges();
+            DeleteRelationShip(film);
+
+            foreach (var i in Countries)
+            {
+                FilmCountry filmCountry = new FilmCountry();
+                filmCountry.FilmId = film.Id;
+                filmCountry.CountryId = i;
+                context.FilmCountry.Add(filmCountry);
+                
+                context.SaveChanges();
+            }
+            foreach (var i in Janrs)
+            {
+                FilmJanr janr = new FilmJanr();
+
+                janr.FilmId = film.Id;
+                janr.JanrId = i;
+                context.FilmJanr.Add(janr);
+                context.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+        public ActionResult Delete(int id)
+        {
+
+            var data = context.Film.Where(x => x.Id == id).FirstOrDefault();
+            context.Film.Remove(data);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        private void DeleteRelationShip(Film film)
+        {
+            var countryList = context.FilmCountry.Where(c => c.FilmId == film.Id).ToList();
+            var janrList = context.FilmJanr.Where(c => c.FilmId == film.Id).ToList();
+
+            foreach (FilmCountry item in countryList)
+            {
+                context.FilmCountry.Remove(item);
+
+            }
+            foreach (FilmJanr item in janrList)
+            {
+                context.FilmJanr.Remove(item);
+
+            }
+        }
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                context.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }

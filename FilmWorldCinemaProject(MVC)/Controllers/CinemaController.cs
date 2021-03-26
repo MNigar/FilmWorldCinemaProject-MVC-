@@ -30,6 +30,32 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
             context.SaveChanges();
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var data = context.Cinema.Where(x => x.Id == id).FirstOrDefault();
+
+            return View(data);
+        }
+        [HttpPost]
+        public ActionResult Edit(Cinema cinema)
+        {
+
+            var entity = context.Entry(cinema);
+            entity.State = System.Data.Entity.EntityState.Modified;
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+        public ActionResult Delete(int id)
+        {
+
+            var data = context.Cinema.Where(x => x.Id == id).FirstOrDefault();
+            context.Cinema.Remove(data);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
         protected override void Dispose(bool disposing)
         {

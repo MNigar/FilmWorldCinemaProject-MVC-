@@ -8,13 +8,12 @@ namespace FilmWorldCinemaProject_MVC_.Models.DbModel
     public class Seat
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public int HallId { get; set; }
+        public int CinemaHallId { get; set; }
         public int RowId { get; set; }
         public int Count { get; set; }
-        public Row Row { get; set; }
-        public Hall Hall{get; set;}
-
+        public virtual Row Row { get; set; }
+        public virtual CinemaHall CinemaHall{get; set;}
+     
 
     }
 }

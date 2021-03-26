@@ -10,7 +10,7 @@ namespace FilmWorldCinemaProject_MVC_.Models
         public int Id { get; set; }
         public int FilmId { get; set; }
         public int JanrId { get; set; }
-        public Janr Janrs { get; set; }
-        public Film Films { get; set; }
+        public virtual Janr Janrs { get; set; }
+        public virtual Film Films { get; set; }
     }
 }

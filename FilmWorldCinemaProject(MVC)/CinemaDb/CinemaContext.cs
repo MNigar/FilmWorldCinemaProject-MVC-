@@ -21,5 +21,6 @@ namespace FilmWorldCinemaProject_MVC_.CinemaDb
         public DbSet<Cinema> Cinema { get; set; }
         public DbSet<Hall> Hall { get; set; }
         public DbSet<Seat> Seat { get; set; }
+        public DbSet<CinemaHall> CinemaHall { get; set; }
     }
 }

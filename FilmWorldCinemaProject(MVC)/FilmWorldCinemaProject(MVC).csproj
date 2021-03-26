@@ -131,6 +131,7 @@
     <Compile Include="Controllers\CinemaController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\FilmController.cs" />
+    <Compile Include="Controllers\HallController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JanrController.cs" />
     <Compile Include="Controllers\RowController.cs" />
@@ -157,13 +158,63 @@
     <Compile Include="Migrations\202103181420225_AddeAboutCinemaTables.designer.cs">
       <DependentUpon>202103181420225_AddeAboutCinemaTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103252356148_updatedfield.cs" />
+    <Compile Include="Migrations\202103252356148_updatedfield.designer.cs">
+      <DependentUpon>202103252356148_updatedfield.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103260520411_check.cs" />
+    <Compile Include="Migrations\202103260520411_check.designer.cs">
+      <DependentUpon>202103260520411_check.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103260544186_addnewrelation.cs" />
+    <Compile Include="Migrations\202103260544186_addnewrelation.designer.cs">
+      <DependentUpon>202103260544186_addnewrelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103260607093_addednewrelationss.cs" />
+    <Compile Include="Migrations\202103260607093_addednewrelationss.designer.cs">
+      <DependentUpon>202103260607093_addednewrelationss.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103260611457_addednewrelationssd.cs" />
+    <Compile Include="Migrations\202103260611457_addednewrelationssd.designer.cs">
+      <DependentUpon>202103260611457_addednewrelationssd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103260647582_addedcinemhall.cs" />
+    <Compile Include="Migrations\202103260647582_addedcinemhall.designer.cs">
+      <DependentUpon>202103260647582_addedcinemhall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103260652074_newrela.cs" />
+    <Compile Include="Migrations\202103260652074_newrela.designer.cs">
+      <DependentUpon>202103260652074_newrela.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103260655444_newrelat.cs" />
+    <Compile Include="Migrations\202103260655444_newrelat.designer.cs">
+      <DependentUpon>202103260655444_newrelat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103260659016_newrelatl.cs" />
+    <Compile Include="Migrations\202103260659016_newrelatl.designer.cs">
+      <DependentUpon>202103260659016_newrelatl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103260704408_newrelatlk.cs" />
+    <Compile Include="Migrations\202103260704408_newrelatlk.designer.cs">
+      <DependentUpon>202103260704408_newrelatlk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103260710547_newrelatlkf.cs" />
+    <Compile Include="Migrations\202103260710547_newrelatlkf.designer.cs">
+      <DependentUpon>202103260710547_newrelatlkf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103260835268_seats.cs" />
+    <Compile Include="Migrations\202103260835268_seats.designer.cs">
+      <DependentUpon>202103260835268_seats.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DbModel\Cinema.cs" />
+    <Compile Include="Models\DbModel\CinemaHall.cs" />
     <Compile Include="Models\DbModel\Country.cs" />
     <Compile Include="Models\DbModel\Hall.cs" />
     <Compile Include="Models\DbModel\Row.cs" />
     <Compile Include="Models\DbModel\Seat.cs" />
     <Compile Include="Models\DbModel\User.cs" />
+    <Compile Include="Models\ViewModel\CinemaHallsView.cs" />
     <Compile Include="Models\ViewModel\CountryJanrListModel.cs" />
     <Compile Include="Models\DbModel\Film.cs" />
     <Compile Include="Models\DbModel\FilmCountry.cs" />
@@ -224,6 +275,22 @@
     <Content Include="Views\Row\Index.cshtml" />
     <Content Include="Views\Cinema\Index.cshtml" />
     <Content Include="Views\Cinema\Create.cshtml" />
+    <Content Include="Views\Janr\Index.cshtml" />
+    <Content Include="Views\Janr\Edit.cshtml" />
+    <Content Include="Views\Countries\Edit.cshtml" />
+    <Content Include="Views\Countries\Index.cshtml" />
+    <Content Include="Views\Film\Edit.cshtml" />
+    <Content Include="Views\Hall\Create.cshtml" />
+    <Content Include="Views\Hall\Index.cshtml" />
+    <Content Include="Views\Hall\CreateHallCinema.cshtml" />
+    <Content Include="Views\Hall\HallCinemaList.cshtml" />
+    <Content Include="Views\Row\CreateHallCinemaRow.cshtml" />
+    <Content Include="Views\Row\List.cshtml" />
+    <Content Include="Views\Row\EditHallCinemaRow.cshtml" />
+    <Content Include="Views\Hall\EditHallCinema.cshtml" />
+    <Content Include="Views\Row\Edit.cshtml" />
+    <Content Include="Views\Cinema\Edit.cshtml" />
+    <Content Include="Views\Hall\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -256,6 +323,42 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103181420225_AddeAboutCinemaTables.resx">
       <DependentUpon>202103181420225_AddeAboutCinemaTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103252356148_updatedfield.resx">
+      <DependentUpon>202103252356148_updatedfield.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103260520411_check.resx">
+      <DependentUpon>202103260520411_check.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103260544186_addnewrelation.resx">
+      <DependentUpon>202103260544186_addnewrelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103260607093_addednewrelationss.resx">
+      <DependentUpon>202103260607093_addednewrelationss.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103260611457_addednewrelationssd.resx">
+      <DependentUpon>202103260611457_addednewrelationssd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103260647582_addedcinemhall.resx">
+      <DependentUpon>202103260647582_addedcinemhall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103260652074_newrela.resx">
+      <DependentUpon>202103260652074_newrela.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103260655444_newrelat.resx">
+      <DependentUpon>202103260655444_newrelat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103260659016_newrelatl.resx">
+      <DependentUpon>202103260659016_newrelatl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103260704408_newrelatlk.resx">
+      <DependentUpon>202103260704408_newrelatlk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103260710547_newrelatlkf.resx">
+      <DependentUpon>202103260710547_newrelatlkf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103260835268_seats.resx">
+      <DependentUpon>202103260835268_seats.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
