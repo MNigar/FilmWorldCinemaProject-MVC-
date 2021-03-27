@@ -211,6 +211,10 @@
     <Compile Include="Migrations\202103262128095_addedattribut.designer.cs">
       <DependentUpon>202103262128095_addedattribut.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103270007500_attribute.cs" />
+    <Compile Include="Migrations\202103270007500_attribute.designer.cs">
+      <DependentUpon>202103270007500_attribute.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DbModel\Cinema.cs" />
     <Compile Include="Models\DbModel\CinemaHall.cs" />
@@ -367,6 +371,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103262128095_addedattribut.resx">
       <DependentUpon>202103262128095_addedattribut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103270007500_attribute.resx">
+      <DependentUpon>202103270007500_attribute.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

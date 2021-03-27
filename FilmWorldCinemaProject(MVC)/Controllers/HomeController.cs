@@ -19,6 +19,8 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
         {
             return View("Login");
         }
+     
+
         public ActionResult Login(User user)
         {
             if (ModelState.IsValid)
@@ -48,6 +50,7 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
             return View("Login");
         }
         [HttpGet]
+  
         public ActionResult Register()
         {
 
@@ -55,6 +58,8 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
             return View();
         
         }
+
+      
         [HttpPost]
         public ActionResult Register(User user)
         {   if (ModelState.IsValid)

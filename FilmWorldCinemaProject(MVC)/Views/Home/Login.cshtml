@@ -19,62 +19,71 @@
     <link href="~/Content/Style.css" rel="stylesheet" />
 </head>
 <body>
-
-    @ViewBag.Error
-    <section class="ftco-section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-6 text-center mb-5">
-                    <h2 class="heading-section">Login</h2>
+   
+        @ViewBag.Error
+        <section class="ftco-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6 text-center mb-5">
+                        <h2 class="heading-section">Login</h2>
+                    </div>
                 </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-md-7 col-lg-5">
-                    <div class="login-wrap p-4 p-md-5">
-                        <div class="icon d-flex align-items-center justify-content-center">
-                            <span class="fa fa-user-o"></span>
-                        </div>
-                        <h3 class="text-center mb-4">Sign In</h3>
-                        <form action="#" class="login-form">
-                            <div class="form-group">
-                                <input type="text" class="form-control rounded-left" placeholder="Username" name="Email" required>
+                <div class="row justify-content-center">
+                    <div class="col-md-7 col-lg-5">
+                        <div class="login-wrap p-4 p-md-5">
+                            <div class="icon d-flex align-items-center justify-content-center">
+                                <span class="fa fa-user-o"></span>
                             </div>
-                            <div class="form-group d-flex">
-                                <input type="password" class="form-control rounded-left" placeholder="Password" name="Password" required>
-                            </div>
-                            <div class="form-group">
-                                @*<button type="submit" class="form-control btn btn-primary rounded submit px-3">Login</button>*@
-
-                                <input type="submit" value="Login" class="form-control btn btn-primary rounded submit px-3" formaction="/Home/Login/" formmethod="post" />
+                            <h3 class="text-center mb-4">Sign In</h3>
+                            <form action="#" class="login-form">
+                                <div class="form-group">
+                                    @*<input type="text" class="form-control rounded-left" placeholder="Username" name="Email" required>*@
 
 
-                            </div>
-                            <div class="form-group">
-                                <button type="button" onclick="location.href='@Url.Action("Register", "Home")'" class="form-control btn btn-primary rounded submit px-3">Registration</button>
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control rounded-left", @placeholder = "Email" } })
 
-                            </div>
-                            
-                            @if(Session["LoginError"] != null)
-                            {
-                                <div class="alert alert-danger" role="alert">
-                                    Email or password incorrect
                                 </div>
-                                Session["LoginError"]= null;
-                            }
+                                <div class="form-group d-flex">
 
-                        </form>
+                                    @*<input type="password" class="form-control rounded-left" placeholder="Password" name="Password" required>*@
+
+                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control rounded-left", @placeholder = "Password" } })
+
+
+                                </div>
+                                <div class="form-group">
+                                    @*<button type="submit" class="form-control btn btn-primary rounded submit px-3">Login</button>*@
+
+                                    <input type="submit" value="Login" class="form-control btn btn-primary rounded submit px-3" formaction="/Home/Login/" formmethod="post" />
+
+
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" onclick="location.href='@Url.Action("Register", "Home")'" class="form-control btn btn-primary rounded submit px-3">Registration</button>
+
+                                </div>
+
+                                @if (Session["LoginError"] != null)
+                                {
+                                    <div class="alert alert-danger" role="alert">
+                                        Email or password incorrect
+                                    </div>
+                                    Session["LoginError"] = null;
+                                }
+
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    @*<script src="js/jquery.min.js"></script>*@
-    @*<script src="js/popper.js"></script>*@
-    <script src="~/Scripts/popper.js"></script>
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/main.js"></script>
-</body>
+        </section>
+    
+        @*<script src="js/jquery.min.js"></script>*@
+        @*<script src="js/popper.js"></script>*@
+        <script src="~/Scripts/popper.js"></script>
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <script src="~/Scripts/main.js"></script>
+    </body>
 </html>
 
