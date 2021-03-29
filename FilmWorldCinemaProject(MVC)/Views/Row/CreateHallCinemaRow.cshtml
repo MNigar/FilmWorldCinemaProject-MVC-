@@ -17,7 +17,7 @@
 
     <input type="hidden" name="CinemaHallId" value="@ViewBag.Cinemahallid" />
     <div class="form-group">
-        @Html.LabelFor(model => model.Row.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Row, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             <select class="form-control select2" name="row" required>
                 @foreach (var item in ViewBag.Rows)
