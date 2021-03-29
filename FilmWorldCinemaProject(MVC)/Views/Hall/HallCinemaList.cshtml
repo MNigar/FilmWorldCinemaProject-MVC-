@@ -33,8 +33,11 @@
         <td>
             @Html.ActionLink("Edit", "EditHallCinema", new { id = item.Id }) |
             @*@Html.ActionLink("Details", "Details", new { id = item.Id }) |*@
-            @Html.ActionLink("Delete", "DeleteHallCinema", new { id = item.Id })|
+            @*@Html.ActionLink("Delete", "DeleteHallCinema", new { id = item.Id })|*@
+            <a onclick="return confirm('Eminsinizmi?')" href="@Url.Action("DeleteHallCinema", "Hall", new { id = item.Id })">
+                <i class="far fa-trash-alt" style="font-size:30px;"></i>
 
+            </a>
             @if (ViewBag.Seat.Count != 0)
             {
                 foreach (var i in ViewBag.Seat)

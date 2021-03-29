@@ -59,7 +59,17 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
         
         }
 
-      
+        [HttpGet]
+
+        public ActionResult Logout()
+        {
+            Session["username"] = null;
+         
+
+            return RedirectToAction("Login");
+
+        }
+
         [HttpPost]
         public ActionResult Register(User user)
         {   if (ModelState.IsValid)

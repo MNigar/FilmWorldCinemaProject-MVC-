@@ -106,15 +106,18 @@
                     <i class="fas fa-info-circle" style="font-size:30px;"></i>
 
                 </a>
-                <a href="@Url.Action("Delete", new { id = item.Id })">
+                @*<a href="@Url.Action("Delete", new { id = item.Id })">
                     <i class="far fa-trash-alt" style="font-size:30px;"></i>
 
-                </a>
-         
+                </a>*@
+
                 @*@Html.ActionLink("Details", "Details", new { id = item.Id })*@
                 @*@Html.ActionLink("Edit", "Edit", new { id = item.Id })*@
                 @*@Html.ActionLink("Delete", "Delete", new { id = item.Id }) |*@
+                <a onclick="return confirm('Eminsinizmi?')" href="@Url.Action("Delete", new { id = item.Id })">
+                    <i class="far fa-trash-alt" style="font-size:30px;"></i>
 
+                </a>
 
             </td>
         </tr>

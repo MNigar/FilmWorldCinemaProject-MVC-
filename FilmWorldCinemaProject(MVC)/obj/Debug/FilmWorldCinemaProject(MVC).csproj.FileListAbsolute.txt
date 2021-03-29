@@ -362,3 +362,17 @@ D:\film\FilmWorldCinemaProject-MVC-\FilmWorldCinemaProject(MVC)\obj\Debug\FilmWo
 D:\film\FilmWorldCinemaProject-MVC-\FilmWorldCinemaProject(MVC)\obj\Debug\FilmWorldCinemaProject_MVC_.Migrations.seats.resources
 D:\film\FilmWorldCinemaProject-MVC-\FilmWorldCinemaProject(MVC)\obj\Debug\FilmWorldCinemaProject_MVC_.Migrations.addedattribut.resources
 D:\film\FilmWorldCinemaProject-MVC-\FilmWorldCinemaProject(MVC)\obj\Debug\FilmWorldCinemaProject_MVC_.Migrations.attribute.resources
+D:\COVID1904\MVCProject\New folder\FilmWorldCinemaProject-MVC-\FilmWorldCinemaProject(MVC)\obj\Debug\FilmWorldCinemaProject_MVC_.Migrations.updatedfield.resources
+D:\COVID1904\MVCProject\New folder\FilmWorldCinemaProject-MVC-\FilmWorldCinemaProject(MVC)\obj\Debug\FilmWorldCinemaProject_MVC_.Migrations.check.resources
+D:\COVID1904\MVCProject\New folder\FilmWorldCinemaProject-MVC-\FilmWorldCinemaProject(MVC)\obj\Debug\FilmWorldCinemaProject_MVC_.Migrations.addnewrelation.resources
+D:\COVID1904\MVCProject\New folder\FilmWorldCinemaProject-MVC-\FilmWorldCinemaProject(MVC)\obj\Debug\FilmWorldCinemaProject_MVC_.Migrations.addednewrelationss.resources
+D:\COVID1904\MVCProject\New folder\FilmWorldCinemaProject-MVC-\FilmWorldCinemaProject(MVC)\obj\Debug\FilmWorldCinemaProject_MVC_.Migrations.addednewrelationssd.resources
+D:\COVID1904\MVCProject\New folder\FilmWorldCinemaProject-MVC-\FilmWorldCinemaProject(MVC)\obj\Debug\FilmWorldCinemaProject_MVC_.Migrations.addedcinemhall.resources
+D:\COVID1904\MVCProject\New folder\FilmWorldCinemaProject-MVC-\FilmWorldCinemaProject(MVC)\obj\Debug\FilmWorldCinemaProject_MVC_.Migrations.newrela.resources
+D:\COVID1904\MVCProject\New folder\FilmWorldCinemaProject-MVC-\FilmWorldCinemaProject(MVC)\obj\Debug\FilmWorldCinemaProject_MVC_.Migrations.newrelat.resources
+D:\COVID1904\MVCProject\New folder\FilmWorldCinemaProject-MVC-\FilmWorldCinemaProject(MVC)\obj\Debug\FilmWorldCinemaProject_MVC_.Migrations.newrelatl.resources
+D:\COVID1904\MVCProject\New folder\FilmWorldCinemaProject-MVC-\FilmWorldCinemaProject(MVC)\obj\Debug\FilmWorldCinemaProject_MVC_.Migrations.newrelatlk.resources
+D:\COVID1904\MVCProject\New folder\FilmWorldCinemaProject-MVC-\FilmWorldCinemaProject(MVC)\obj\Debug\FilmWorldCinemaProject_MVC_.Migrations.newrelatlkf.resources
+D:\COVID1904\MVCProject\New folder\FilmWorldCinemaProject-MVC-\FilmWorldCinemaProject(MVC)\obj\Debug\FilmWorldCinemaProject_MVC_.Migrations.seats.resources
+D:\COVID1904\MVCProject\New folder\FilmWorldCinemaProject-MVC-\FilmWorldCinemaProject(MVC)\obj\Debug\FilmWorldCinemaProject_MVC_.Migrations.addedattribut.resources
+D:\COVID1904\MVCProject\New folder\FilmWorldCinemaProject-MVC-\FilmWorldCinemaProject(MVC)\obj\Debug\FilmWorldCinemaProject_MVC_.Migrations.attribute.resources

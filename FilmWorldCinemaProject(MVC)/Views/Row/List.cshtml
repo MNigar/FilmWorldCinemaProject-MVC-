@@ -41,7 +41,12 @@
     </td>
     <td>
         @Html.ActionLink("Edit", "EditHallCinemaRow", new { id = item.Id }) |
-        @Html.ActionLink("Delete", "DeleteHallCinemaRow", new { id = item.Id })
+        @*@Html.ActionLink("Delete", "DeleteHallCinemaRow", new { id = item.Id })*@
+
+        <a onclick="return confirm('Eminsinizmi?')" href="@Url.Action("DeleteHallCinemaRow", "Row", new { id = item.Id })">
+            <i class="far fa-trash-alt" style="font-size:30px;"></i>
+
+        </a>
     </td>
 </tr>
 }
