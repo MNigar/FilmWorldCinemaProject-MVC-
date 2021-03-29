@@ -46,6 +46,13 @@
         </div>
 
     </div>
+    @if (Session["SeatError"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            This row have seat count
+        </div>
+        Session["SeatError"] = null;
+    }
 </div>
 }
 

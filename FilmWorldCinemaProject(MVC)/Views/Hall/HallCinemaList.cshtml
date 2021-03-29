@@ -31,32 +31,37 @@
             @Html.DisplayFor(modelItem => item.Halls.Name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "EditHallCinema", new { id = item.Id }) |
+            <a href="@Url.Action("EditHallCinema","Hall", new { id = item.Id })">
+                <i class="fas fa-edit" style="font-size:30px;"></i>
+
+            </a>
             @*@Html.ActionLink("Details", "Details", new { id = item.Id }) |*@
             @*@Html.ActionLink("Delete", "DeleteHallCinema", new { id = item.Id })|*@
             <a onclick="return confirm('Eminsinizmi?')" href="@Url.Action("DeleteHallCinema", "Hall", new { id = item.Id })">
                 <i class="far fa-trash-alt" style="font-size:30px;"></i>
 
             </a>
-            @if (ViewBag.Seat.Count != 0)
+            @*@if (ViewBag.Seat.Count != 0)
+        {
+            foreach (var i in ViewBag.Seat)
             {
-                foreach (var i in ViewBag.Seat)
+                if (i == item.Id)
                 {
-                    if (i == item.Id)
-                    {
 
-                    }
-                    else
-                    {
-                        <a href="@Url.Action("CreateHallCinemaRow", "Row",new { id = item.Id })"> Add seat</a>
+                }
+                else
+                {
+                    <a href="@Url.Action("CreateHallCinemaRow", "Row",new { id = item.Id })"> Add seat</a>
 
-                    }
                 }
             }
-            else
-            { <a href="@Url.Action("CreateHallCinemaRow", "Row",new { id = item.Id })"> Add seat</a>
+        }*@
+            @*else
+        { <a href="@Url.Action("CreateHallCinemaRow", "Row",new { id = item.Id })"> Add seat</a>
 
-            }
+        }*@
+            <a href="@Url.Action("CreateHallCinemaRow", "Row",new { id = item.Id })"> Add seat</a>
+
         </td>
     </tr>
 }

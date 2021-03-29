@@ -24,13 +24,13 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
         {
             var list = context.CinemaHall.ToList();
             List<int> colums = new List<int>();
-            foreach (var i in list)
-            { 
-                var seat = context.Seat.Where(x => x.CinemaHallId == i.Id).FirstOrDefault();
-                if (seat != null)
-                colums.Add(seat.CinemaHallId);
-            }
-            ViewBag.Seat = colums;
+            //foreach (var i in list)
+            //{ 
+            //    var seat = context.Seat.Where(x => x.CinemaHallId == i.Id).FirstOrDefault();
+            //    if (seat != null)
+            //    colums.Add(seat.CinemaHallId);
+            //}
+            //ViewBag.Seat = colums;
             return View(list);
         }
         [HttpGet]

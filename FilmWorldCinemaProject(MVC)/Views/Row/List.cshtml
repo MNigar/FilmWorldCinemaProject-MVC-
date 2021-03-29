@@ -40,7 +40,10 @@
         @Html.DisplayFor(modelItem => item.Count)
     </td>
     <td>
-        @Html.ActionLink("Edit", "EditHallCinemaRow", new { id = item.Id }) |
+        <a href="@Url.Action("EditHallCinemaRow","Row", new { id = item.Id })">
+            <i class="fas fa-edit" style="font-size:30px;"></i>
+
+        </a>
         @*@Html.ActionLink("Delete", "DeleteHallCinemaRow", new { id = item.Id })*@
 
         <a onclick="return confirm('Eminsinizmi?')" href="@Url.Action("DeleteHallCinemaRow", "Row", new { id = item.Id })">

@@ -80,7 +80,12 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
             return RedirectToAction("Index");
         }
 
-
+        [HttpGet]
+        public ActionResult ListForAddingSeat()
+        {   
+       
+            return View();
+        }
 
         [HttpGet]
         public ActionResult CreateHallCinemaRow(int id)
@@ -98,14 +103,17 @@ namespace FilmWorldCinemaProject_MVC_.Controllers
         {
 
             //ViewBag.Hall = context.CinemaHall.Where(x=>x.Id==id).Select(x=>x.HallId).ToList();
-            if(context.Seat.Any( x=>x.CinemaHallId== seat.CinemaHallId))
+            if(!context.Seat.Any( x=>x.CinemaHallId== seat.CinemaHallId && x.RowId==row))
             {
-                TempData["Message"] = "This already exits";
+
+                seat.RowId = row;
+                context.Seat.Add(seat);
+                context.SaveChanges();
+                return RedirectToAction("List");
+              
             }
-            seat.RowId = row;
-            context.Seat.Add(seat);
-            context.SaveChanges();
-            return RedirectToAction("List");
+            Session["SeatError"] = true;
+            return RedirectToAction("CreateHallCinemaRow");
         }
 
         [HttpGet]
